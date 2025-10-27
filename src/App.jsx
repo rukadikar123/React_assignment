@@ -1,4 +1,6 @@
 import { useState } from "react";
+import VectorIcon from "./assets/Vector.svg";
+import RectangleIcon from "./assets/Rectangle 39348.svg";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("aboutMe");
@@ -65,47 +67,74 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col items-center gap-6">
-          <div className="w-[720px] h-[316px] rounded-[27px] bg-[#363C43] border border-[#96BEE7] shadow-[10px_10px_40px_10px_#00000080] opacity-100 flex flex-col justify-center items-center gap-4 pt-2 ">
-            <div className="w-[614px] h-[62px] rounded-[23px] bg-[#171717] shadow-[inset_0_4.96px_12.4px_2.48px_#00000040] flex items-center  px-2 gap-1">
-              {/* Tab content */}
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleClick(tab)}
-                  className={`w-[195px] h-[49px] rounded-[16px] ${
-                    selectedTab === tab
-                      ? "bg-[#28292F] shadow-[13.49px_16.87px_67.47px_8.43px_#0A0A0A,-8.43px_-16.87px_50.6px_-16.87px_#485B71]"
-                      : "bg-[#171717]"
-                  } text-white font-medium`}
-                >
-                  {tab === "aboutMe"
-                    ? "About me"
-                    : tab === "experiences"
-                    ? "Experiences"
-                    : "Recommended"}
-                </button>
-              ))}
-            </div>
-            <div className="w-[611px] h-[175px] text-[#969696]  font-[Plus Jakarta Sans] font-normal text-[20px] leading-[20px]  py-4 rounded-lg">
-              Hello! I’m Dave, your sales rep here from Salesforce. I’ve been
-              working at this awesome company for 3 years now.
-              <br />
-              <br />I was born and raised in Albany, NY & have been living in
-              Santa Carla for the past 10 years with my wife Tiffany and my
-              4-year-old twin daughters — Emma and Ella. Both of them are just
-              starting school, so my calendar is usually blocked between 9-10
-              AM. This is a...
+          {/* 🔹 Upper Right Div (Tabs + Bio + Left Icons) */}
+          <div className="w-[720px] h-[316px] rounded-[27px] bg-[#363C43] border border-[#96BEE7] shadow-[10px_10px_40px_10px_#00000080] flex justify-center items-center opacity-100">
+            {/* Inner Flex Row: Left icons + Right content */}
+            <div className="flex gap-8 items-start">
+              {/* Left small column */}
+              <div className="flex flex-col items-center gap-24 w-[24px] h-[160px] ">
+                <img src={VectorIcon} alt="dot" className="w-[18px] h-[18px]" />
+                <div className="grid grid-cols-2 space-y-1 w-[24px] h-[31px]">
+                  {[...Array(6)].map((_, i) => (
+                    <img
+                      key={i}
+                      src={RectangleIcon}
+                      alt={`rectangle-${i}`}
+                      className=""
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Right side: Tabs + Text */}
+              <div className="flex flex-col items-center justify-start gap-4">
+                {/* Tabs section */}
+                <div className="w-[614px] h-[62px] rounded-[23px] bg-[#171717] shadow-[inset_0_4.96px_12.4px_2.48px_#00000040] flex items-center px-2 gap-1">
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => handleClick(tab)}
+                      className={`w-[195px] h-[49px] rounded-2xl ${
+                        selectedTab === tab
+                          ? "bg-[#28292F] shadow-[13.49px_16.87px_67.47px_8.43px_#0A0A0A,-8.43px_-16.87px_50.6px_-16.87px_#485B71]"
+                          : "bg-[#171717]"
+                      } text-white font-medium`}
+                    >
+                      {tab === "aboutMe"
+                        ? "About me"
+                        : tab === "experiences"
+                        ? "Experiences"
+                        : "Recommended"}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Bio Text */}
+                <div className="w-[611px] text-[#969696] font-[Plus Jakarta Sans] font-normal text-[20px] leading-[20px] py-2">
+                  Hello! I’m Dave, your sales rep here from Salesforce. I’ve
+                  been working at this awesome company for 3 years now.
+                  <br />
+                  <br />I was born and raised in Albany, NY & have been living
+                  in Santa Carla for the past 10 years with my wife Tiffany and
+                  my 4-year-old twin daughters — Emma and Ella. Both of them are
+                  just starting school, so my calendar is usually blocked
+                  between 9-10 AM. This is a...
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Divider */}
           <div
-            className="w-[612px] h-[4px]  rounded-[2.46px] shadow-[0_4px_4px_0_#00000054] backdrop-blur-[9.84px]"
+            className="w-[612px] h-[4px] rounded-[2.46px] shadow-[0_4px_4px_0_#00000054] backdrop-blur-[9.84px]"
             style={{
               background: `linear-gradient(180deg, rgba(40,40,40,0.1) 0%, rgba(248,248,248,0.1) 100%),
-                 linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05))`,
+                   linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05))`,
             }}
           ></div>
-          <div className="w-[720px] h-[330px] rounded-[27px] bg-[#191B1F] border border-[#96BEE7] shadow-[10px_10px_40px_10px_#00000080] opacity-100">
-          </div>
+
+          {/* Lower Div */}
+          <div className="w-[720px] h-[330px] rounded-[27px] bg-[#191B1F] border border-[#96BEE7] shadow-[10px_10px_40px_10px_#00000080] opacity-100"></div>
         </div>
       </div>
     </>
